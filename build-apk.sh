@@ -2,13 +2,16 @@
 
 set -e
 
+export CI=true
+export CORDOVA_TELEMETRY=0
+
 echo "======================================"
 echo "Construcción de APK Android con Cordova"
 echo "======================================"
 
 echo ""
 echo "Paso 1: Instalando Cordova globalmente..."
-npm install -g cordova
+npm install -g cordova --silent
 
 echo ""
 echo "Paso 2: Verificando instalación de Java..."
@@ -18,10 +21,12 @@ echo ""
 echo "Paso 3: Configurando variables de entorno para Android..."
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 export ANDROID_SDK_ROOT=$HOME/android-sdk
+export ANDROID_HOME=$ANDROID_SDK_ROOT
 export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools
 
 echo "JAVA_HOME: $JAVA_HOME"
 echo "ANDROID_SDK_ROOT: $ANDROID_SDK_ROOT"
+echo "ANDROID_HOME: $ANDROID_HOME"
 
 echo ""
 echo "Paso 4: Descargando Android SDK Command Line Tools..."
@@ -37,7 +42,7 @@ fi
 echo ""
 echo "Paso 5: Instalando componentes de Android SDK..."
 yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses || true
-$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.0" || true
+$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0" || true
 
 echo ""
 echo "Paso 6: Volviendo al directorio del proyecto..."
@@ -108,7 +113,7 @@ cat > config.xml << 'EOF'
     <platform name="android">
         <allow-intent href="market:*" />
         <preference name="android-minSdkVersion" value="22" />
-        <preference name="android-targetSdkVersion" value="33" />
+        <preference name="android-targetSdkVersion" value="35" />
     </platform>
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Orientation" value="default" />
