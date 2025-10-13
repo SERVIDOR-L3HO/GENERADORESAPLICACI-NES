@@ -141,7 +141,7 @@ fi
 
 echo ""
 echo "Paso 13: Agregando plataforma Android..."
-cordova platform add android
+cordova platform add android || true
 
 echo ""
 echo "Paso 14: Compilando APK en modo debug..."
