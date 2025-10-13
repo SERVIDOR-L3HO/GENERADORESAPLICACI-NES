@@ -41,8 +41,8 @@ fi
 
 echo ""
 echo "Paso 5: Instalando componentes de Android SDK..."
-yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses || true
-$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0" || true
+yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses
+$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
 echo ""
 echo "Paso 6: Volviendo al directorio del proyecto..."
@@ -141,7 +141,11 @@ fi
 
 echo ""
 echo "Paso 13: Agregando plataforma Android..."
-cordova platform add android || true
+if [ ! -d "platforms/android" ]; then
+    cordova platform add android
+else
+    echo "Plataforma Android ya está instalada (directorio platforms/android existe), continuando..."
+fi
 
 echo ""
 echo "Paso 14: Compilando APK en modo debug..."
@@ -154,19 +158,25 @@ echo "======================================"
 echo ""
 echo "📱 Ruta de la APK:"
 APK_PATH=$(find platforms/android/app/build/outputs/apk/debug -name "*.apk" | head -n 1)
-if [ -n "$APK_PATH" ]; then
+if [ -n "$APK_PATH" ] && [ -f "$APK_PATH" ]; then
     FULL_PATH="/home/runner/workspace/ultragol-app/$APK_PATH"
     echo "$FULL_PATH"
     echo ""
     echo "Copiando APK a la raíz del proyecto para fácil acceso..."
     cp "$APK_PATH" /home/runner/workspace/ultragol.apk
-    echo ""
-    echo "✅ APK copiada a: /home/runner/workspace/ultragol.apk"
-    echo ""
-    echo "Tamaño de la APK:"
-    ls -lh /home/runner/workspace/ultragol.apk | awk '{print $5}'
+    
+    if [ -f "/home/runner/workspace/ultragol.apk" ]; then
+        echo ""
+        echo "✅ APK copiada exitosamente a: /home/runner/workspace/ultragol.apk"
+        echo ""
+        echo "Tamaño de la APK:"
+        ls -lh /home/runner/workspace/ultragol.apk | awk '{print $5}'
+    else
+        echo "❌ Error al copiar la APK a la raíz del proyecto"
+        exit 1
+    fi
 else
-    echo "❌ No se encontró la APK generada"
+    echo "❌ No se encontró la APK generada o el archivo no existe"
     exit 1
 fi
 
