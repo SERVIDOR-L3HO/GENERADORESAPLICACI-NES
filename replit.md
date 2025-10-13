@@ -8,7 +8,7 @@ Sistema automatizado para generar aplicaciones Android (APK) a partir de página
 
 ✅ **Proyecto Completado** - La APK se ha generado exitosamente y está lista para descargar e instalar en dispositivos Android.
 
-- **APK Generada:** `ultragol.apk` (3.5 MB)
+- **APK Generada:** `ultragol.apk` (33 MB)
 - **Ubicación:** `/home/runner/workspace/ultragol.apk`
 - **Última Compilación:** Octubre 13, 2025
 
@@ -48,7 +48,7 @@ Sistema automatizado para generar aplicaciones Android (APK) a partir de página
 - **Comando:** `bash -c "chmod +x build-apk.sh && ./build-apk.sh"`
 - **Tipo:** Console
 - **Duración:** ~2-3 minutos
-- **Salida:** APK debug de 3.5 MB
+- **Salida:** APK debug de 33 MB (incluye todos los archivos web)
 
 El workflow ejecuta automáticamente:
 1. Instalación de Cordova
@@ -64,7 +64,7 @@ El workflow ejecuta automáticamente:
 - ✅ Instalación de dependencias (Node.js, OpenJDK, Android SDK)
 - ✅ Creación del script de construcción automatizado
 - ✅ Configuración del proyecto Cordova con permisos completos
-- ✅ Generación exitosa de la APK (3.5 MB)
+- ✅ Generación exitosa de la APK (33 MB con archivos completos del repositorio)
 - ✅ Configuración del workflow automático
 - ✅ Mejoras de robustez en el script (verificación de errores, detección de plataforma)
 - ✅ Documentación completa (README.md)
@@ -72,9 +72,9 @@ El workflow ejecuta automáticamente:
 ## Arquitectura de la Aplicación
 
 ### Frontend
-- **index.html:** Contiene un iframe que carga la página web remota
-- **Estilo:** CSS embebido para pantalla completa sin márgenes
-- **Seguridad:** Content Security Policy configurada para permitir cualquier origen
+- **Archivos completos:** Todos los archivos HTML, CSS, JS del repositorio GitHub original
+- **Assets locales:** Imágenes, iconos y recursos incluidos en la APK
+- **Seguridad:** Content Security Policy de Cordova configurada para permitir recursos externos (Firebase, APIs)
 
 ### Configuración
 - **Permisos:** Acceso completo a internet, navegación ilimitada
@@ -96,13 +96,14 @@ El script `build-apk.sh` realiza los siguientes pasos:
 5. **Instalación de componentes:** platform-tools, build-tools, SDK platform
 6. **Limpieza:** Eliminación de proyectos anteriores
 7. **Creación del proyecto:** cordova create con ID y nombre específicos
-8. **Configuración web:** index.html con iframe a la web original
-9. **Permisos:** config.xml con acceso completo
-10. **Icono:** Generación de icono SVG
-11. **Plataforma Android:** Verificación y adición si es necesario
-12. **Compilación:** Gradle build en modo debug
-13. **Copia:** APK movida a la raíz del proyecto
-14. **Verificación:** Confirmación de que la APK existe
+8. **Clonado de archivos:** Copia de todos los archivos del repositorio GitHub a www/
+9. **Ajuste de CSP:** Modificación del index.html para compatibilidad con Cordova
+10. **Permisos:** config.xml con acceso completo
+11. **Icono:** Generación de icono SVG
+12. **Plataforma Android:** Verificación y adición si es necesario
+13. **Compilación:** Gradle build en modo debug
+14. **Copia:** APK movida a la raíz del proyecto
+15. **Verificación:** Confirmación de que la APK existe
 
 ## Características del Script
 
@@ -124,7 +125,11 @@ El script `build-apk.sh` realiza los siguientes pasos:
 ## Notas Importantes
 
 ### Dependencia de Internet
-La aplicación requiere conexión a internet para funcionar, ya que carga el contenido desde https://ultragol-l3ho.com.mx/index.html mediante un iframe.
+La aplicación contiene todos los archivos localmente y puede funcionar offline. Sin embargo, algunas funciones requieren internet:
+- Firebase (autenticación, base de datos)
+- APIs externas
+- Anuncios de Google AdSense
+- Recursos externos cargados dinámicamente
 
 ### Modo Debug vs Release
 El proyecto genera APKs en modo debug por defecto para facilitar la instalación directa. Para producción (Google Play Store), se requeriría:

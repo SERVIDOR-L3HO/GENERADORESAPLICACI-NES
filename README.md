@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Esta es una aplicación Android generada automáticamente a partir de la página web https://ultragol-l3ho.com.mx/index.html usando Apache Cordova.
+Esta es una aplicación Android generada automáticamente usando Apache Cordova. La aplicación contiene todos los archivos originales de la página web ULTRAGOL, incluyendo HTML, CSS, JavaScript, imágenes y assets, permitiendo que funcione de forma local en tu dispositivo.
 
 ## Información de la Aplicación
 
@@ -16,7 +16,7 @@ Esta es una aplicación Android generada automáticamente a partir de la página
 La APK está lista para instalar en dispositivos Android:
 
 📱 **Archivo APK:** `ultragol.apk`
-📦 **Tamaño:** 3.5 MB
+📦 **Tamaño:** 33 MB
 📍 **Ubicación completa:** `/home/runner/workspace/ultragol.apk`
 
 ## Cómo Descargar e Instalar
@@ -64,8 +64,9 @@ chmod +x build-apk.sh
 
 El proyecto Cordova incluye:
 
-- **index.html:** Un iframe que carga la página web original
-- **config.xml:** Configuración con todos los permisos necesarios para acceder a URLs externas
+- **Archivos web completos:** Todos los archivos HTML, CSS, JS del repositorio original
+- **Assets:** Todas las imágenes, iconos y recursos de la web
+- **config.xml:** Configuración con todos los permisos necesarios
 - **Icono:** Icono genérico con las letras "UG"
 
 ### Permisos Configurados
@@ -107,10 +108,11 @@ Para una versión de producción (Google Play Store), necesitarías:
 - Asegúrate de habilitar "Fuentes desconocidas" en la configuración de seguridad
 - En Android 8.0+, el permiso es por aplicación (permite instalación desde el navegador/explorador de archivos)
 
-### La aplicación no carga la web
+### La aplicación no carga correctamente
 
-- Verifica tu conexión a internet
-- La aplicación necesita internet para cargar https://ultragol-l3ho.com.mx/index.html
+- La aplicación contiene todos los archivos localmente
+- Algunas funciones pueden requerir internet (Firebase, APIs externas)
+- Verifica que los permisos de la app estén habilitados
 
 ### Error al compilar
 
