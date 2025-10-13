@@ -59,37 +59,26 @@ cordova create ultragol-app com.l3ho.ultragol ULTRAGOL
 cd ultragol-app
 
 echo ""
-echo "Paso 9: Creando index.html con iframe..."
-cat > www/index.html << 'EOF'
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: gap: content:">
-    <title>ULTRAGOL</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    </style>
-</head>
-<body>
-    <iframe src="https://ultragol-l3ho.com.mx/index.html" allowfullscreen></iframe>
-</body>
-</html>
-EOF
+echo "Paso 9: Copiando archivos originales desde el repositorio GitHub..."
+# Limpiar carpeta www excepto cordova.js
+rm -rf www/*
+# Copiar todos los archivos del repositorio al directorio www
+echo "Copiando archivos HTML, CSS, JS, assets, etc..."
+cp -r /home/runner/workspace/ultragol-source/* www/ 2>/dev/null || true
+# Asegurar que los directorios importantes existan
+mkdir -p www/css www/js www/data www/assets www/attached_assets
+echo "✅ Archivos copiados exitosamente a www/"
+
+echo ""
+echo "Paso 9b: Ajustando index.html para compatibilidad con Cordova..."
+# Agregar Content Security Policy compatible con Cordova después del charset
+if [ -f "www/index.html" ]; then
+    # Agregar CSP después de la etiqueta charset si no existe
+    if ! grep -q "Content-Security-Policy.*gap:" www/index.html; then
+        sed -i '/<meta charset="UTF-8">/a\    <meta http-equiv="Content-Security-Policy" content="default-src * gap: data: blob: '\''unsafe-inline'\'' '\''unsafe-eval'\'' ws: wss:;">' www/index.html
+    fi
+    echo "✅ CSP de Cordova agregado al index.html"
+fi
 
 echo ""
 echo "Paso 10: Configurando config.xml con permisos..."
