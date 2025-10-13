@@ -1,0 +1,1070 @@
+/* UltraGol - Diseño Profesional para Donaciones de Fútbol */
+
+/* Importar fuentes profesionales */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+/* Variables CSS para colores profesionales de fútbol */
+:root {
+    --field-green: #2d5a27;
+    --grass-green: #4a7c47;
+    --light-green: #6ba368;
+    --gold-accent: #d4af37;
+    --dark-gold: #b8941f;
+    --deep-blue: #1a365d;
+    --navy-blue: #2c5282;
+    --charcoal: #2d3748;
+    --dark-gray: #4a5568;
+    --light-gray: #a0aec0;
+    --warm-white: #fafafa;
+    --pure-white: #ffffff;
+    --soft-shadow: rgba(0, 0, 0, 0.08);
+    --medium-shadow: rgba(0, 0, 0, 0.12);
+    --strong-shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* Reset y base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--charcoal);
+    overflow-x: hidden;
+    background: var(--warm-white);
+}
+
+/* Hero Section Profesional */
+.donations-hero {
+    background: linear-gradient(135deg, var(--field-green) 0%, var(--grass-green) 50%, var(--light-green) 100%);
+    padding: 8rem 0 6rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Efecto sutil de campo de fútbol */
+.donations-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 48px,
+            rgba(255, 255, 255, 0.03) 50px,
+            rgba(255, 255, 255, 0.03) 52px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 48px,
+            rgba(255, 255, 255, 0.03) 50px,
+            rgba(255, 255, 255, 0.03) 52px
+        );
+    z-index: 1;
+}
+
+/* Elementos de fondo profesionales */
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
+.floating-soccer-balls {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0.1;
+}
+
+.soccer-ball {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at 30% 30%, #ffffff 0%, #e2e8f0 50%, #cbd5e0 100%);
+    border-radius: 50%;
+    animation: gentleFloat 25s infinite ease-in-out;
+}
+
+.soccer-ball::before {
+    content: '⚽';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 45px;
+    opacity: 0.8;
+    animation: slowRotate 20s linear infinite;
+}
+
+.soccer-ball:nth-child(1) { left: 5%; animation-delay: 0s; }
+.soccer-ball:nth-child(2) { left: 20%; animation-delay: 5s; }
+.soccer-ball:nth-child(3) { left: 35%; animation-delay: 10s; }
+.soccer-ball:nth-child(4) { left: 50%; animation-delay: 15s; }
+.soccer-ball:nth-child(5) { left: 65%; animation-delay: 20s; }
+.soccer-ball:nth-child(6) { left: 80%; animation-delay: 25s; }
+
+@keyframes gentleFloat {
+    0%, 100% {
+        transform: translateY(100vh) scale(0.8);
+        opacity: 0;
+    }
+    20%, 80% {
+        opacity: 0.1;
+    }
+    50% {
+        transform: translateY(-10vh) scale(1.1);
+        opacity: 0.15;
+    }
+}
+
+@keyframes slowRotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Contenido del hero profesional */
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+    padding: 0 2rem;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.02em;
+}
+
+.mega-heart {
+    color: var(--gold-accent);
+    animation: elegantPulse 3s infinite;
+    font-size: 4rem;
+    filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes elegantPulse {
+    0%, 100% { 
+        transform: scale(1); 
+    }
+    50% { 
+        transform: scale(1.1); 
+    }
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 4rem;
+    line-height: 1.7;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estadísticas profesionales */
+.hero-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-accent), var(--dark-gold));
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.stat-item:hover::before {
+    transform: translateX(0);
+}
+
+.stat-item:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.stat-item i {
+    font-size: 2.5rem;
+    color: var(--gold-accent);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover i {
+    transform: scale(1.1);
+}
+
+.stat-number {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+/* Sección de planes profesional */
+.donation-plans {
+    padding: 8rem 0;
+    background: var(--pure-white);
+    position: relative;
+}
+
+.donation-plans::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.section-title i {
+    color: var(--gold-accent);
+    font-size: 3rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--dark-gray);
+    margin-bottom: 5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Grid de planes elegante */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.plan-card {
+    background: var(--pure-white);
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    box-shadow: 
+        0 4px 6px var(--soft-shadow),
+        0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.plan-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, var(--gold-accent), var(--field-green), var(--navy-blue));
+    border-radius: 22px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.plan-card:hover::before {
+    opacity: 1;
+}
+
+.plan-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 
+        0 20px 40px var(--medium-shadow),
+        0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Badges profesionales */
+.plan-badge {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--gold-accent), var(--dark-gold));
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Iconos de planes */
+.plan-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.plan-icon {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 2.2rem;
+    color: white;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.plan-card:hover .plan-icon {
+    transform: scale(1.1);
+}
+
+.basic .plan-icon {
+    background: linear-gradient(135deg, var(--dark-gray), var(--charcoal));
+    box-shadow: 0 8px 25px rgba(74, 85, 104, 0.3);
+}
+
+.standard .plan-icon {
+    background: linear-gradient(135deg, var(--field-green), var(--grass-green));
+    box-shadow: 0 8px 25px rgba(45, 90, 39, 0.3);
+}
+
+.premium .plan-icon {
+    background: linear-gradient(135deg, var(--navy-blue), var(--deep-blue));
+    box-shadow: 0 8px 25px rgba(26, 54, 93, 0.3);
+}
+
+.custom .plan-icon {
+    background: linear-gradient(135deg, var(--gold-accent), var(--dark-gold));
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.plan-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+}
+
+/* Precios profesionales */
+.plan-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    margin-bottom: 2.5rem;
+}
+
+.currency {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
+    color: var(--dark-gray);
+    font-weight: 600;
+}
+
+.amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--charcoal);
+}
+
+.period {
+    font-size: 1.2rem;
+    color: var(--dark-gray);
+    font-weight: 500;
+}
+
+.custom-input {
+    border: none;
+    outline: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--charcoal);
+    background: transparent;
+    text-align: center;
+    width: 160px;
+    min-width: 120px;
+    border-bottom: 2px solid var(--gold-accent);
+}
+
+.custom-input:focus {
+    border-bottom-color: var(--field-green);
+}
+
+/* Features elegantes */
+.plan-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.5rem 0;
+}
+
+.plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--dark-gray);
+    transition: color 0.2s ease;
+}
+
+.plan-features li:hover {
+    color: var(--charcoal);
+}
+
+.plan-features i {
+    color: var(--field-green);
+    font-size: 1rem;
+    width: 16px;
+    text-align: center;
+}
+
+/* Botones profesionales */
+.plan-button {
+    width: 100%;
+    padding: 1.2rem 2rem;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.plan-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transition: left 0.5s;
+}
+
+.plan-button:hover::before {
+    left: 100%;
+}
+
+.basic .plan-button {
+    background: linear-gradient(135deg, var(--dark-gray), var(--charcoal));
+    color: white;
+}
+
+.standard .plan-button {
+    background: linear-gradient(135deg, var(--field-green), var(--grass-green));
+    color: white;
+}
+
+.premium .plan-button {
+    background: linear-gradient(135deg, var(--navy-blue), var(--deep-blue));
+    color: white;
+}
+
+.custom .plan-button {
+    background: linear-gradient(135deg, var(--gold-accent), var(--dark-gold));
+    color: white;
+}
+
+.plan-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--medium-shadow);
+}
+
+.plan-button:active {
+    transform: translateY(-1px);
+}
+
+/* Sección "Cómo se usarán las donaciones" */
+.how-donations-help {
+    padding: 8rem 0;
+    background: linear-gradient(135deg, var(--field-green) 0%, var(--grass-green) 100%);
+    color: white;
+    position: relative;
+}
+
+.how-donations-help::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+.how-donations-help .section-title {
+    color: white;
+}
+
+.usage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.usage-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.usage-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-accent), rgba(255, 255, 255, 0.5));
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+    border-radius: 20px 20px 0 0;
+}
+
+.usage-card:hover::before {
+    transform: translateX(0);
+}
+
+.usage-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.usage-icon {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold-accent), var(--dark-gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 2.2rem;
+    color: white;
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.usage-card:hover .usage-icon {
+    transform: scale(1.1);
+}
+
+.usage-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.usage-card p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+}
+
+.usage-percentage {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold-accent);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal profesional */
+.payment-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    background: var(--pure-white);
+    margin: 3% auto;
+    padding: 0;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 550px;
+    max-height: 95vh;
+    overflow-y: auto;
+    box-shadow: 
+        0 25px 80px rgba(0, 0, 0, 0.15),
+        0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem 2.5rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: var(--charcoal);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--dark-gray);
+    padding: 0.8rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-modal:hover {
+    background: var(--warm-white);
+    color: var(--charcoal);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 2.5rem;
+}
+
+.donation-summary {
+    background: var(--warm-white);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+}
+
+.summary-item:last-child {
+    margin-bottom: 0;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.summary-label {
+    font-weight: 500;
+    color: var(--dark-gray);
+}
+
+.summary-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--field-green);
+}
+
+.summary-recipient {
+    font-weight: 600;
+    color: var(--charcoal);
+}
+
+#paypal-button-container {
+    margin: 2.5rem 0;
+    padding: 2rem;
+    border: 2px dashed var(--light-gray);
+    border-radius: 12px;
+    background: var(--warm-white);
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-security {
+    margin-top: 2.5rem;
+    text-align: center;
+}
+
+.security-badges {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.security-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--dark-gray);
+    background: var(--warm-white);
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.security-badge i {
+    color: var(--field-green);
+}
+
+/* Sección de agradecimiento */
+.thank-you {
+    padding: 8rem 0;
+    background: var(--pure-white);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.thank-you-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.thank-you-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 2rem;
+}
+
+.thank-you-text {
+    font-size: 1.25rem;
+    color: var(--dark-gray);
+    line-height: 1.7;
+    margin-bottom: 3rem;
+}
+
+.social-support h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--charcoal);
+    margin-bottom: 2.5rem;
+}
+
+.support-options {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.support-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.2rem 2.5rem;
+    background: var(--pure-white);
+    color: var(--field-green);
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid var(--field-green);
+}
+
+.support-btn:hover {
+    background: var(--field-green);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(45, 90, 39, 0.2);
+}
+
+/* Overlay de éxito profesional */
+.success-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    backdrop-filter: blur(8px);
+}
+
+.success-content {
+    background: var(--pure-white);
+    padding: 4rem 3rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 2rem;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+}
+
+.success-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--field-green), var(--grass-green));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 2.5rem;
+    color: white;
+    animation: successScale 2s infinite alternate;
+    box-shadow: 0 8px 25px rgba(45, 90, 39, 0.3);
+}
+
+@keyframes successScale {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+.success-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--charcoal);
+}
+
+.success-content p {
+    font-size: 1.1rem;
+    color: var(--dark-gray);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.success-btn {
+    background: linear-gradient(135deg, var(--field-green), var(--grass-green));
+    color: white;
+    border: none;
+    padding: 1.2rem 2.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.success-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(45, 90, 39, 0.3);
+}
+
+/* Responsive Design Profesional */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .mega-heart {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .plans-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .usage-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .support-options {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .modal-content {
+        margin: 5% auto;
+        width: 95%;
+    }
+    
+    .modal-header,
+    .modal-body {
+        padding: 2rem;
+    }
+    
+    .security-badges {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .donations-hero {
+        padding: 6rem 0 4rem;
+        min-height: 70vh;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .mega-heart {
+        font-size: 2.5rem;
+    }
+    
+    .amount,
+    .custom-input {
+        font-size: 2.8rem;
+    }
+    
+    .plan-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .modal-header,
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .success-content {
+        padding: 3rem 2rem;
+    }
+    
+    .success-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+    
+    .floating-soccer-balls {
+        display: none; /* Ocultar pelotas en móviles para mejor rendimiento */
+    }
+}
