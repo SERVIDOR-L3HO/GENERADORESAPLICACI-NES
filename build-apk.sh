@@ -61,15 +61,15 @@ cd ultragol-app
 echo ""
 echo "Paso 9: Copiando archivos originales desde el repositorio GitHub..."
 # Verificar que el repositorio existe
-if [ ! -d "/home/runner/workspace/ultragol-source" ]; then
-    echo "❌ Error: El repositorio ultragol-source no existe. Clona el repositorio primero."
+if [ ! -d "/home/runner/workspace/proyecto-web" ]; then
+    echo "❌ Error: El repositorio proyecto-web no existe. Clona el repositorio primero."
     exit 1
 fi
 # Limpiar carpeta www excepto cordova.js
 rm -rf www/*
 # Copiar todos los archivos del repositorio al directorio www
 echo "Copiando archivos HTML, CSS, JS, assets, etc..."
-cp -r /home/runner/workspace/ultragol-source/* www/
+cp -r /home/runner/workspace/proyecto-web/* www/
 # Asegurar que los directorios importantes existan
 mkdir -p www/css www/js www/data www/assets www/attached_assets
 echo "✅ Archivos copiados exitosamente a www/"

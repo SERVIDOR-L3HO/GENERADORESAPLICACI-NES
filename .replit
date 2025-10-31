@@ -27,9 +27,9 @@ args = "Build APK"
 name = "Build APK"
 author = "agent"
 
+[workflows.workflow.metadata]
+outputType = "console"
+
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "bash -c \"chmod +x build-apk.sh && ./build-apk.sh\""
-
-[workflows.workflow.metadata]
-outputType = "console"

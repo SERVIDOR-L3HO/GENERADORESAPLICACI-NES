@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="css/app-download-banner.css?v=2025091201">
     <link rel="stylesheet" href="css/professional-hero.css?v=2025091401">
     <link rel="stylesheet" href="css/gemini-chat.css">
+    <link rel="stylesheet" href="css/splash-screen.css">
+    <link rel="stylesheet" href="css/bottom-nav.css">
+    <link rel="stylesheet" href="css/transmisiones-live.css">
+    <link rel="stylesheet" href="css/modales-ultra.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
@@ -33,6 +37,31 @@
      crossorigin="anonymous"></script>
 </head>
 <body>
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <!-- Barras diagonales -->
+        <div class="splash-rings">
+            <div class="ring"></div>
+            <div class="ring"></div>
+        </div>
+        
+        <!-- Logo Container -->
+        <div class="splash-logo-container">
+            <img src="attached_assets/IMG_20250908_185312_(512_x_512_píxel)_1760333939937.png" alt="UltraGol" class="splash-logo">
+        </div>
+        
+        <!-- Loading Text -->
+        <div class="splash-text">ULTRAGOL</div>
+        
+        <!-- Percentage Counter -->
+        <div class="splash-percentage" id="splashPercentage">0%</div>
+        
+        <!-- Loading Bar -->
+        <div class="splash-loading-bar">
+            <div class="splash-loading-progress"></div>
+        </div>
+    </div>
+
     <!-- Header Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -49,6 +78,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="teams.html" class="nav-link">Equipos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="goleadores.html" class="nav-link">Goleadores</a>
                 </li>
                 <li class="nav-item">
                     <a href="calendario.html" class="nav-link">Calendario</a>
@@ -213,59 +245,25 @@
         </div>
     </section>
 
-    <!-- Live Streams Section -->
-    <section class="live-streams-hero">
+    <!-- Transmisiones EN VIVO Section -->
+    <section class="transmisiones-live-section">
         <div class="container">
-            <div class="live-streams-card">
-                <div class="live-streams-header">
-                    <h2 class="live-title">
-                        <span class="live-icon">
-                            <i class="fas fa-play-circle"></i>
-                            <span class="pulse"></span>
-                        </span>
-                        🔴 TRANSMISIONES EN VIVO
-                    </h2>
-                    <p class="live-subtitle">Disfruta los partidos de Liga MX en tiempo real</p>
-                </div>
-                
-                <div class="live-streams-content">
-                    <div class="live-feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-broadcast-tower"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h3>Enlaces de Calidad</h3>
-                            <p>Links verificados de transmisiones en vivo</p>
-                        </div>
-                    </div>
-                    
-                    <div class="live-feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h3>Comunidad Activa</h3>
-                            <p>Comparte y encuentra los mejores streams</p>
-                        </div>
-                    </div>
-                    
-                    <div class="live-feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h3>Multiplataforma</h3>
-                            <p>YouTube, Facebook, Instagram y más</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="live-cta">
-                    <a href="ULTRA/index.html" class="btn btn-live" target="_blank">
-                        <i class="fas fa-play"></i>
-                        <span>ACCEDER A UltraGol LIVE</span>
-                        <div class="btn-glow"></div>
-                    </a>
+            <div class="transmisiones-header">
+                <h2 class="transmisiones-title">
+                    <span class="live-indicator">
+                        <span class="live-dot"></span>
+                        EN VIVO
+                    </span>
+                    Partidos Disponibles
+                </h2>
+                <p class="transmisiones-subtitle">Accede a las transmisiones en vivo con un solo clic</p>
+            </div>
+            
+            <div id="transmisiones-live-container">
+                <!-- Los partidos se cargan dinámicamente desde la API -->
+                <div class="no-transmisiones">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Cargando transmisiones...</p>
                 </div>
             </div>
         </div>
@@ -278,32 +276,15 @@
         <div class="container">
             <h2 class="section-title">Analytics Profesional</h2>
             <div class="analytics-grid">
-                <div class="analytics-card">
-                    <h3>Rendimiento de Liga</h3>
-                    <div id="leaguePerformance" class="chart-container">
-                        <div class="chart-placeholder">
-                            <i class="fas fa-chart-line"></i>
-                            <p>Gráfico de rendimiento general</p>
-                        </div>
+                <div class="analytics-card full-width-card">
+                    <div class="scorers-header">
+                        <h3>⚽ LÍDERES DE GOLEO</h3>
+                        <p class="scorers-subtitle">Los máximos artilleros de la Liga MX</p>
                     </div>
-                </div>
-                <div class="analytics-card">
-                    <h3>Top Goleadores</h3>
-                    <div id="topScorers" class="scorers-list">
-                        <div class="scorer-item">
-                            <span class="position">1</span>
-                            <span class="name">Análisis Avanzado</span>
-                            <span class="goals">Disponible</span>
-                        </div>
-                        <div class="scorer-item">
-                            <span class="position">2</span>
-                            <span class="name">Estadísticas Pro</span>
-                            <span class="goals">En Tiempo Real</span>
-                        </div>
-                        <div class="scorer-item">
-                            <span class="position">3</span>
-                            <span class="name">Métricas Avanzadas</span>
-                            <span class="goals">Precisas</span>
+                    <div id="lideresGoleo" class="lideres-goleo-container">
+                        <div class="loading-scorers">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Cargando goleadores...</p>
                         </div>
                     </div>
                 </div>
@@ -607,45 +588,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>UltraGol</h3>
-                    <p>Plataforma deportiva profesional by L3HO</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Enlaces</h4>
-                    <ul>
-                        <li><a href="standings.html">Tabla de Posiciones</a></li>
-                        <li><a href="teams.html">Equipos</a></li>
-                        <li><a href="fixtures.html">Partidos</a></li>
-                        <li><a href="calendario.html">Calendario</a></li>
-                        <li><a href="estadisticas.html">Estadísticas</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Información</h4>
-                    <ul>
-                        <li><a href="#">Reglamento</a></li>
-                        <li><a href="#">Estadísticas</a></li>
-                        <li><a href="#">Noticias</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 UltraGol by L3HO. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
 
     
 
@@ -1052,64 +994,46 @@
         });
     </script>
     
-    <!-- Original main.js -->
-    <script src="js/main.js?v=2024091801"></script>
-    
-    <!-- Mini Banner de Aplicación UltraGol -->
-    <div id="ultraGolMiniAppBanner" class="mini-app-banner">
-        <div class="mini-banner-content">
-            <div class="mini-banner-icon">
-                <i class="fas fa-mobile-alt"></i>
-            </div>
-            <div class="mini-banner-text">
-                <span class="mini-banner-title">ABRIR APLICACION DE ULTRAGOL</span>
-            </div>
-            <button id="closeMiniAppBanner" class="mini-banner-close">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-    </div>
-
+    <!-- Splash Screen Animation Script -->
     <script>
-        // Mini App Banner functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const miniAppBanner = document.getElementById('ultraGolMiniAppBanner');
-            const closeBannerBtn = document.getElementById('closeMiniAppBanner');
+        // Simple percentage counter animation
+        function animatePercentage() {
+            const percentageElement = document.getElementById('splashPercentage');
+            let currentPercent = 0;
+            const duration = 2000; // 2 seconds
+            const increment = 100 / (duration / 40); // Update every 40ms
             
-            // Check if banner was previously closed
-            const bannerClosed = localStorage.getItem('ultraGolMiniAppBannerClosed');
-            if (bannerClosed === 'true') {
-                miniAppBanner.style.display = 'none';
-            } else {
-                // Show banner after 2 seconds
-                setTimeout(() => {
-                    miniAppBanner.classList.add('show');
-                }, 2000);
-            }
-            
-            // Close banner functionality
-            closeBannerBtn.addEventListener('click', function() {
-                miniAppBanner.classList.add('hide');
-                localStorage.setItem('ultraGolMiniAppBannerClosed', 'true');
-                setTimeout(() => {
-                    miniAppBanner.style.display = 'none';
-                }, 300);
-            });
-            
-            // Banner click to open app (you can customize this action)
-            miniAppBanner.addEventListener('click', function(e) {
-                if (e.target === closeBannerBtn || e.target.parentNode === closeBannerBtn) {
-                    return; // Don't trigger if clicking close button
+            const interval = setInterval(() => {
+                currentPercent += increment;
+                if (currentPercent >= 100) {
+                    currentPercent = 100;
+                    clearInterval(interval);
                 }
-                // Here you can add action to open the app
-                // For example: window.open('/ULTRA/index.html', '_blank');
-                window.open('/ULTRA/index.html', '_blank');
-            });
+                percentageElement.textContent = Math.floor(currentPercent) + '%';
+            }, 40);
+        }
+        
+        // Initialize splash screen
+        document.addEventListener('DOMContentLoaded', () => {
+            animatePercentage();
+            
+            // Remove splash screen after animation
+            setTimeout(() => {
+                const splashScreen = document.getElementById('splashScreen');
+                splashScreen.style.display = 'none';
+            }, 3000);
         });
     </script>
+    
+    <!-- UltraGol API Module -->
+    <script src="js/ultragol-api.js"></script>
+    
+    <!-- Original main.js -->
+    <script src="js/main.js?v=2024091801"></script>
 
-    <!-- Video Carousel 3D with Dynamic Data Loading -->
+    <!-- Video Carousel 3D with Dynamic Data Loading - DISABLED (usando nuevo carrusel API) -->
     <script>
+        /* COMENTADO - Usando nuevo carrusel con API
         class VideoCarousel3D {
             constructor() {
                 this.carousel = document.getElementById('videoCarousel');
@@ -1468,9 +1392,66 @@
                 }
             }, 1000); // Wait for carousel to fully initialize
         });
+        */
     </script>
+
+    <!-- Modal de Selección de Transmisión -->
+    <div id="streamOptionsModal" class="stream-options-modal">
+        <div class="stream-options-overlay" onclick="closeStreamOptionsModal()"></div>
+        <div class="stream-options-content">
+            <div class="stream-options-header">
+                <div class="header-icon-wrapper">
+                    <i class="fas fa-satellite-dish"></i>
+                </div>
+                <h3>Elige tu Transmisión</h3>
+                <p id="streamMatchName">Partido</p>
+                <button class="close-stream-options" onclick="closeStreamOptionsModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="stream-options-body">
+                <div id="streamOptionsGrid" class="stream-options-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal del Reproductor de Video -->
+    <div id="videoPlayerModal" class="video-player-modal">
+        <div class="video-player-overlay" onclick="closeVideoPlayer()"></div>
+        <div class="video-player-container">
+            <div class="video-player-header">
+                <div class="player-title">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Transmisión en Vivo</span>
+                </div>
+                <div class="player-controls">
+                    <button class="player-control-btn" onclick="toggleFullscreen()" title="Pantalla completa">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                    <button class="player-control-btn close-player-btn" onclick="closeVideoPlayer()" title="Cerrar">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="video-player-wrapper">
+                <iframe 
+                    id="videoPlayerIframe" 
+                    frameborder="0" 
+                    allowfullscreen 
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    scrolling="no">
+                </iframe>
+                <div class="video-loading">
+                    <div class="video-spinner"></div>
+                    <p>Cargando transmisión...</p>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <script src="js/gemini-chat.js"></script>
     <script src="js/simple-auth.js"></script>
+    <script src="js/bottom-nav.js"></script>
+    <script src="js/transmisiones-live.js"></script>
 </body>
 </html>

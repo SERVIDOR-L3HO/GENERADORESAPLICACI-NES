@@ -52,17 +52,31 @@ async function loadStandingsTable() {
 }
 
 async function getStandingsData() {
-    // If data is already loaded, use it
+    // Always try to load from UltraGol API first for fresh data
+    try {
+        if (window.ULTRAGOL_API) {
+            const data = await window.ULTRAGOL_API.getTabla();
+            console.log('✅ Standings loaded from API:', data.length, 'teams');
+            return filterStandingsByType(data);
+        }
+    } catch (error) {
+        console.warn('⚠️ Error loading from API, trying fallback:', error);
+    }
+
+    // Fallback: check if data is already loaded
     if (window.ligaMXApp && window.ligaMXApp.standingsData().length > 0) {
+        console.log('📋 Using cached standings data');
         return filterStandingsByType(window.ligaMXApp.standingsData());
     }
 
-    // Otherwise, load from JSON
+    // Last resort: load from local JSON
     try {
         const response = await fetch('data/standings.json');
         const data = await response.json();
+        console.log('📁 Loaded standings from local JSON');
         return filterStandingsByType(data);
     } catch (error) {
+        console.error('❌ Error loading standings:', error);
         throw new Error('Failed to load standings data');
     }
 }
@@ -183,8 +197,12 @@ async function loadTeamSelectors() {
 }
 
 async function loadTeamsFromJSON() {
-    const response = await fetch('data/teams.json');
-    return await response.json();
+    if (window.ULTRAGOL_API) {
+        return await window.ULTRAGOL_API.getEquipos();
+    } else {
+        const response = await fetch('data/teams.json');
+        return await response.json();
+    }
 }
 
 function updateComparison() {

@@ -72,6 +72,23 @@ app.use(express.static(path.join(__dirname), {
     }
 }));
 
+app.get('/api/videos', (req, res) => {
+    const videos = require('./data/videos-highlights.json');
+    res.json(videos);
+});
+
+app.get('/api/fixtures', (req, res) => {
+    const fixtures = require('./data/fixtures.json');
+    res.json({ fixtures });
+});
+
+app.get('/api/fixtures/:league', (req, res) => {
+    const allFixtures = require('./data/fixtures-all-leagues.json');
+    const league = req.params.league.toLowerCase();
+    const fixtures = allFixtures[league] || [];
+    res.json({ fixtures });
+});
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
